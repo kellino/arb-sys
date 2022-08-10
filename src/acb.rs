@@ -162,97 +162,122 @@ extern "C" {
     );
     pub fn acb_add(
         z: *mut acb_struct,
-        x: *mut acb_struct,
-        y: *mut acb_struct,
+        x: *const acb_struct,
+        y: *const acb_struct,
         prec: mp_limb_signed_t,
     );
     pub fn acb_sub(
         z: *mut acb_struct,
-        x: *mut acb_struct,
-        y: *mut acb_struct,
+        x: *const acb_struct,
+        y: *const acb_struct,
         prec: mp_limb_signed_t,
     );
-    pub fn acb_add_si(z: *mut acb_struct, x: *mut acb_struct, c: mp_limb_t, prec: mp_limb_signed_t);
-    pub fn acb_add_ui(z: *mut acb_struct, x: *mut acb_struct, c: mp_limb_t, prec: mp_limb_signed_t);
-    pub fn acb_sub_si(z: *mut acb_struct, x: *mut acb_struct, c: mp_limb_t, prec: mp_limb_signed_t);
-    pub fn acb_sub_ui(z: *mut acb_struct, x: *mut acb_struct, c: mp_limb_t, prec: mp_limb_signed_t);
+    pub fn acb_add_si(
+        z: *mut acb_struct,
+        x: *const acb_struct,
+        c: mp_limb_t,
+        prec: mp_limb_signed_t,
+    );
+    pub fn acb_add_ui(
+        z: *mut acb_struct,
+        x: *const acb_struct,
+        c: mp_limb_t,
+        prec: mp_limb_signed_t,
+    );
+    pub fn acb_sub_si(
+        z: *mut acb_struct,
+        x: *const acb_struct,
+        c: mp_limb_t,
+        prec: mp_limb_signed_t,
+    );
+    pub fn acb_sub_ui(
+        z: *mut acb_struct,
+        x: *const acb_struct,
+        c: mp_limb_t,
+        prec: mp_limb_signed_t,
+    );
     pub fn acb_add_fmpz(
         z: *mut acb_struct,
-        x: *mut acb_struct,
-        y: *mut fmpz,
+        x: *const acb_struct,
+        y: *const fmpz,
         prec: mp_limb_signed_t,
     );
     pub fn acb_add_arb(
         z: *mut acb_struct,
-        x: *mut acb_struct,
-        y: *mut arb_struct,
+        x: *const acb_struct,
+        y: *const arb_struct,
         prec: mp_limb_signed_t,
     );
     pub fn acb_sub_fmpz(
         z: *mut acb_struct,
-        x: *mut acb_struct,
-        y: *mut fmpz,
+        x: *const acb_struct,
+        y: *const fmpz,
         prec: mp_limb_signed_t,
     );
     pub fn acb_sub_arb(
         z: *mut acb_struct,
-        x: *mut acb_struct,
-        y: *mut arb_struct,
+        x: *const acb_struct,
+        y: *const arb_struct,
         prec: mp_limb_signed_t,
     );
-    pub fn acb_neg(z: *mut acb_struct, x: *mut acb_struct);
-    pub fn acb_conj(z: *mut acb_struct, x: *mut acb_struct);
-    pub fn acb_abs(u: *mut arb_struct, z: *mut acb_struct, prec: mp_limb_signed_t);
-    pub fn acb_mul_ui(z: *mut acb_struct, x: *mut acb_struct, y: mp_limb_t, prec: mp_limb_signed_t);
+    pub fn acb_neg(z: *mut acb_struct, x: *const acb_struct);
+    pub fn acb_conj(z: *mut acb_struct, x: *const acb_struct);
+    pub fn acb_abs(u: *mut arb_struct, z: *const acb_struct, prec: mp_limb_signed_t);
+    pub fn acb_mul_ui(
+        z: *mut acb_struct,
+        x: *const acb_struct,
+        y: mp_limb_t,
+        prec: mp_limb_signed_t,
+    );
     pub fn acb_mul_si(
         z: *mut acb_struct,
-        x: *mut acb_struct,
+        x: *const acb_struct,
         y: mp_limb_signed_t,
         prec: mp_limb_signed_t,
     );
     pub fn acb_mul_fmpz(
         z: *mut acb_struct,
-        x: *mut acb_struct,
-        y: *mut fmpz,
+        x: *const acb_struct,
+        y: *const fmpz,
         prec: mp_limb_signed_t,
     );
     pub fn acb_mul_arb(
         z: *mut acb_struct,
-        x: *mut acb_struct,
-        y: *mut arb_struct,
+        x: *const acb_struct,
+        y: *const arb_struct,
         prec: mp_limb_signed_t,
     );
-    pub fn acb_mul_onei(z: *mut acb_struct, x: *mut acb_struct);
-    pub fn acb_div_onei(z: *mut acb_struct, x: *mut acb_struct);
+    pub fn acb_mul_onei(z: *mut acb_struct, x: *const acb_struct);
+    pub fn acb_div_onei(z: *mut acb_struct, x: *const acb_struct);
     pub fn acb_mul(
         z: *mut acb_struct,
-        x: *mut acb_struct,
-        y: *mut acb_struct,
+        x: *const acb_struct,
+        y: *const acb_struct,
         prec: mp_limb_signed_t,
     );
     pub fn acb_mul_naive(
         z: *mut acb_struct,
-        x: *mut acb_struct,
-        y: *mut acb_struct,
+        x: *const acb_struct,
+        y: *const acb_struct,
         prec: mp_limb_signed_t,
     );
-    pub fn acb_mul_2exp_si(z: *mut acb_struct, x: *mut acb_struct, e: mp_limb_signed_t);
-    pub fn acb_mul_2exp_fmpz(z: *mut acb_struct, x: *mut acb_struct, c: *mut fmpz);
+    pub fn acb_mul_2exp_si(z: *mut acb_struct, x: *const acb_struct, e: mp_limb_signed_t);
+    pub fn acb_mul_2exp_fmpz(z: *mut acb_struct, x: *const acb_struct, c: *mut fmpz);
     pub fn acb_addmul(
         z: *mut acb_struct,
-        x: *mut acb_struct,
-        y: *mut acb_struct,
+        x: *const acb_struct,
+        y: *const acb_struct,
         prec: mp_limb_signed_t,
     );
     pub fn acb_submul(
         z: *mut acb_struct,
-        x: *mut acb_struct,
-        y: *mut acb_struct,
+        x: *const acb_struct,
+        y: *const acb_struct,
         prec: mp_limb_signed_t,
     );
     pub fn acb_addmul_ui(
         z: *mut acb_struct,
-        x: *mut acb_struct,
+        x: *const acb_struct,
         y: mp_limb_t,
         prec: mp_limb_signed_t,
     );
@@ -397,64 +422,74 @@ extern "C" {
         len: mp_limb_signed_t,
         prec: mp_limb_signed_t,
     );
-    pub fn acb_inv(z: *mut acb_struct, x: *mut acb_struct, prec: mp_limb_signed_t);
+    pub fn acb_inv(z: *mut acb_struct, x: *const acb_struct, prec: mp_limb_signed_t);
     pub fn acb_div(
         z: *mut acb_struct,
-        x: *mut acb_struct,
-        y: *mut acb_struct,
+        x: *const acb_struct,
+        y: *const acb_struct,
         prec: mp_limb_signed_t,
     );
-    pub fn acb_div_ui(z: *mut acb_struct, x: *mut acb_struct, c: mp_limb_t, prec: mp_limb_signed_t);
+    pub fn acb_div_ui(
+        z: *mut acb_struct,
+        x: *const acb_struct,
+        c: mp_limb_t,
+        prec: mp_limb_signed_t,
+    );
     pub fn acb_div_si(
         z: *mut acb_struct,
-        x: *mut acb_struct,
+        x: *const acb_struct,
         c: mp_limb_signed_t,
         prec: mp_limb_signed_t,
     );
     pub fn acb_div_arb(
         z: *mut acb_struct,
-        x: *mut acb_struct,
-        c: *mut arb_struct,
+        x: *const acb_struct,
+        c: *const arb_struct,
         prec: mp_limb_signed_t,
     );
     pub fn acb_div_fmpz(
         z: *mut acb_struct,
-        x: *mut acb_struct,
-        c: *mut fmpz,
+        x: *const acb_struct,
+        c: *const fmpz,
         prec: mp_limb_signed_t,
     );
-    pub fn acb_cube(y: *mut acb_struct, x: *mut acb_struct, prec: mp_limb_signed_t);
+    pub fn acb_cube(y: *mut acb_struct, x: *const acb_struct, prec: mp_limb_signed_t);
     pub fn acb_pow_fmpz(
         y: *mut acb_struct,
-        b: *mut acb_struct,
-        e: *mut fmpz,
+        b: *const acb_struct,
+        e: *const fmpz,
         prec: mp_limb_signed_t,
     );
-    pub fn acb_pow_ui(y: *mut acb_struct, b: *mut acb_struct, e: mp_limb_t, prec: mp_limb_signed_t);
+    pub fn acb_pow_ui(
+        y: *mut acb_struct,
+        b: *const acb_struct,
+        e: mp_limb_t,
+        prec: mp_limb_signed_t,
+    );
     pub fn acb_pow_si(
         y: *mut acb_struct,
-        b: *mut acb_struct,
+        b: *const acb_struct,
         e: mp_limb_signed_t,
         prec: mp_limb_signed_t,
     );
     pub fn acb_const_pi(x: *mut acb_struct, prec: mp_limb_signed_t);
-    pub fn acb_log(r: *mut acb_struct, z: *mut acb_struct, prec: mp_limb_signed_t);
-    pub fn acb_log1p(r: *mut acb_struct, z: *mut acb_struct, prec: mp_limb_signed_t);
-    pub fn acb_exp(r: *mut acb_struct, z: *mut acb_struct, prec: mp_limb_signed_t);
-    pub fn acb_exp_pi_i(r: *mut acb_struct, z: *mut acb_struct, prec: mp_limb_signed_t);
+    pub fn acb_log(r: *mut acb_struct, z: *const acb_struct, prec: mp_limb_signed_t);
+    pub fn acb_log1p(r: *mut acb_struct, z: *const acb_struct, prec: mp_limb_signed_t);
+    pub fn acb_exp(r: *mut acb_struct, z: *const acb_struct, prec: mp_limb_signed_t);
+    pub fn acb_exp_pi_i(r: *mut acb_struct, z: *const acb_struct, prec: mp_limb_signed_t);
     pub fn acb_exp_invexp(
         r: *mut acb_struct,
-        s: *mut acb_struct,
-        z: *mut acb_struct,
+        s: *const acb_struct,
+        z: *const acb_struct,
         prec: mp_limb_signed_t,
     );
     pub fn acb_expm1(r: *mut acb_struct, z: *mut acb_struct, prec: mp_limb_signed_t);
-    pub fn acb_sin(r: *mut acb_struct, z: *mut acb_struct, prec: mp_limb_signed_t);
-    pub fn acb_cos(r: *mut acb_struct, z: *mut acb_struct, prec: mp_limb_signed_t);
+    pub fn acb_sin(r: *mut acb_struct, z: *const acb_struct, prec: mp_limb_signed_t);
+    pub fn acb_cos(r: *mut acb_struct, z: *const acb_struct, prec: mp_limb_signed_t);
     pub fn acb_sin_cos(
         s: *mut acb_struct,
-        c: *mut acb_struct,
-        z: *mut acb_struct,
+        c: *const acb_struct,
+        z: *const acb_struct,
         prec: mp_limb_signed_t,
     );
     pub fn acb_tan(r: *mut acb_struct, z: *mut acb_struct, prec: mp_limb_signed_t);
@@ -494,14 +529,14 @@ extern "C" {
     pub fn acb_sinc_pi(res: *mut acb_struct, z: *mut acb_struct, prec: mp_limb_signed_t);
     pub fn acb_pow_arb(
         z: *mut acb_struct,
-        x: *mut acb_struct,
-        y: *mut arb_struct,
+        x: *const acb_struct,
+        y: *const arb_struct,
         prec: mp_limb_signed_t,
     );
     pub fn acb_pow(
         r: *mut acb_struct,
-        x: *mut acb_struct,
-        y: *mut acb_struct,
+        x: *const acb_struct,
+        y: *const acb_struct,
         prec: mp_limb_signed_t,
     );
     pub fn acb_sqrt(y: *mut acb_struct, x: *mut acb_struct, prec: mp_limb_signed_t);
@@ -783,16 +818,16 @@ extern "C" {
         prec: mp_limb_signed_t,
     );
     pub fn acb_fprint(file: *mut FILE, x: *mut acb_struct);
-    pub fn acb_print(x: *mut acb_struct);
-    pub fn acb_fprintd(file: *mut FILE, z: *mut acb_struct, digits: mp_limb_signed_t);
-    pub fn acb_printd(z: *mut acb_struct, digits: mp_limb_signed_t);
+    pub fn acb_print(x: *const acb_struct);
+    pub fn acb_fprintd(file: *mut FILE, z: *const acb_struct, digits: mp_limb_signed_t);
+    pub fn acb_printd(z: *const acb_struct, digits: mp_limb_signed_t);
     pub fn acb_fprintn(
         fp: *mut FILE,
-        z: *mut acb_struct,
+        z: *const acb_struct,
         digits: mp_limb_signed_t,
         flags: mp_limb_t,
     );
-    pub fn acb_printn(x: *mut acb_struct, digits: mp_limb_signed_t, flags: mp_limb_t);
+    pub fn acb_printn(x: *const acb_struct, digits: mp_limb_signed_t, flags: mp_limb_t);
     pub fn acb_randtest(
         z: *mut acb_struct,
         state: *mut flint_rand_s,

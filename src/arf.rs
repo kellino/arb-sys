@@ -156,6 +156,7 @@ extern "C" {
     pub fn arf_set_mpfr(x: *mut arf_struct, y: *const __mpfr_struct);
     pub fn arf_equal(x: *const arf_struct, y: *const arf_struct) -> c_int;
     pub fn arf_equal_si(x: *const arf_struct, y: mp_limb_signed_t) -> c_int;
+    pub fn arf_equal_d(x: *const arf_struct, y: f64) -> c_int;
     pub fn arf_min(z: *mut arf_struct, a: *const arf_struct, b: *const arf_struct);
     pub fn arf_max(z: *mut arf_struct, a: *const arf_struct, b: *const arf_struct);
     pub fn arf_abs(y: *mut arf_struct, x: *const arf_struct);
@@ -602,21 +603,21 @@ pub unsafe fn arf_mul(
     x: arf_srcptr,
     y: arf_srcptr,
     prec: mp_limb_signed_t,
-    rnd: c_int) -> c_int 
-{
+    rnd: c_int,
+) -> c_int {
     if rnd == crate::FMPR_RND_DOWN {
         arf_mul_rnd_down(z, x, y, prec)
     } else {
         arf_mul_rnd_any(z, x, y, prec, rnd)
-    } 
+    }
 }
 
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::mem::MaybeUninit;
     use libc::c_long;
     use quickcheck::quickcheck;
+    use std::mem::MaybeUninit;
 
     quickcheck! {
         fn test_arf_mul(x_int: c_int, y_int: c_int) -> bool {
@@ -631,10 +632,10 @@ mod tests {
                 arf_init_set_si(x.as_mut_ptr(), x_long);
                 arf_init_set_si(y.as_mut_ptr(), y_long);
                 arf_init(z.as_mut_ptr());
-                
+
                 arf_mul(z.as_mut_ptr(), x.as_ptr(), y.as_ptr(), 130, crate::ARF_RND_NEAR);
                 let res = arf_equal_si(z.as_ptr(), x_long*y_long);
-                
+
                 arf_clear(x.as_mut_ptr());
                 arf_clear(y.as_mut_ptr());
                 arf_clear(z.as_mut_ptr());
