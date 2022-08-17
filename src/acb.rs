@@ -175,7 +175,7 @@ extern "C" {
     pub fn acb_add_si(
         z: *mut acb_struct,
         x: *const acb_struct,
-        c: mp_limb_t,
+        c: mp_limb_signed_t,
         prec: mp_limb_signed_t,
     );
     pub fn acb_add_ui(
@@ -187,7 +187,7 @@ extern "C" {
     pub fn acb_sub_si(
         z: *mut acb_struct,
         x: *const acb_struct,
-        c: mp_limb_t,
+        c: mp_limb_signed_t,
         prec: mp_limb_signed_t,
     );
     pub fn acb_sub_ui(
@@ -635,12 +635,12 @@ extern "C" {
         prec: mp_limb_signed_t,
     );
     pub fn acb_rising_ui_get_mag(bound: *mut mag_struct, s: *mut acb_struct, n: mp_limb_t);
-    pub fn acb_gamma(y: *mut acb_struct, x: *mut acb_struct, prec: mp_limb_signed_t);
-    pub fn acb_rgamma(y: *mut acb_struct, x: *mut acb_struct, prec: mp_limb_signed_t);
-    pub fn acb_lgamma(y: *mut acb_struct, x: *mut acb_struct, prec: mp_limb_signed_t);
-    pub fn acb_log_sin_pi(res: *mut acb_struct, z: *mut acb_struct, prec: mp_limb_signed_t);
-    pub fn acb_digamma(y: *mut acb_struct, x: *mut acb_struct, prec: mp_limb_signed_t);
-    pub fn acb_zeta(z: *mut acb_struct, s: *mut acb_struct, prec: mp_limb_signed_t);
+    pub fn acb_gamma(y: *mut acb_struct, x: *const acb_struct, prec: mp_limb_signed_t);
+    pub fn acb_rgamma(y: *mut acb_struct, x: *const acb_struct, prec: mp_limb_signed_t);
+    pub fn acb_lgamma(y: *mut acb_struct, x: *const acb_struct, prec: mp_limb_signed_t);
+    pub fn acb_log_sin_pi(res: *mut acb_struct, z: *const acb_struct, prec: mp_limb_signed_t);
+    pub fn acb_digamma(y: *mut acb_struct, x: *const acb_struct, prec: mp_limb_signed_t);
+    pub fn acb_zeta(z: *mut acb_struct, s: *const acb_struct, prec: mp_limb_signed_t);
     pub fn acb_hurwitz_zeta(
         z: *mut acb_struct,
         s: *mut acb_struct,
